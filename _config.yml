@@ -1,0 +1,14 @@
+# Site settings
+title: News from London
+email: hamish.workstuff@gmail.com
+description: > # this means to ignore newlines until "baseurl:"
+  A daily journal by Hamish Irving.
+baseurl: "/london-news" 		# the subpath of your site, e.g. /blog/
+url: "http:localhost:4000" 		# the base hostname & protocol for your site
+
+# Build settings
+markdown: rdiscount 			# we installed this gem separately
+rdiscount:
+    extensions: [smart] 		# typographically more accurate, outputs ASCII characters and proper punctuation
+permalink: /articles/:title 	# outputs the title of the post in the url, separated by hyphens
+paginate: 3 					# enables pagination, shows 3 per page

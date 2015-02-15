@@ -1,0 +1,52 @@
+---
+layout: default
+---
+
+  <div class="row">
+    <div class="eight columns">
+      {% for post in paginator.posts limit: 3 %}   <!-- Loop through posts in paginator object but limit to 3 posts -->
+      <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title}}</a></h3>   <!-- Use title variable as post title and url -->
+
+      <div class="row">
+        <div class="twelve columns">
+          {{ post.content }}  <!-- Display post content -->
+        </div>
+      </div>
+      {% endfor %}  <!-- End for loop -->
+
+      <div class="pagination">  <!-- Pagination at bottom of page -->
+        <p>
+          {% if paginator.previous_page %}  <!-- Check if there is a previous page -->
+
+            {% if paginator.previous_page == 1 %}   <!-- Check if previous page is page 1 -->
+              <a href="/" class="previous">Previous</a>   <!-- If it is, link to homepage -->
+            {% else %}
+              <a href="{{ site.baseurl }}/page{{ paginator.previous_page }}">Previous</a>   <!-- Else, create link to previous page -->
+            {% endif %}
+
+          {% else %}
+            <span class="previous">Previous</span>  <!-- If there isnt, have no link (styled span) -->
+          {% endif %}
+          <span class="page_number">Page: {{ paginator.page }} of {{ paginator.total_pages }} </span>   <!-- Show Page: "1 of 4" -->
+          {% if paginator.next_page %}  <!-- Check if there is a next page -->
+            <a href="{{ site.baseurl }}/page{{ paginator.next_page }}">Next</a>   <!-- If there is, create link to next page -->
+          {% else %}
+            <span class="next">Next</span>  <!-- If there isnt, have no link (styled span) -->
+          {% endif %}
+        </p>
+      </div>
+    </div>
+
+    <div class="four columns">
+      <h4>Recent Writings</h4>
+      <p>From the archives of this journal:</p>
+      <ul class="disc">
+        {% for post in site.posts offset: 3 limit: 10 %} <!-- Loop through posts but offset by 3 (dont show posts already on page) -->
+          <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>  <!-- Use title variable as post title and url -->
+        {% endfor %}  <!-- End for loop -->
+      </ul>
+      <h4>About Edward Hyde</h4>
+      <p>A night owl, citizen of London, of questionale character.</p>
+      <p><a href="/feed.xml">Subscribe to feed</a></p>
+    </div>
+  </div>
