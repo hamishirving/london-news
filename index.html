@@ -19,7 +19,7 @@ layout: default
           {% if paginator.previous_page %}  <!-- Check if there is a previous page -->
 
             {% if paginator.previous_page == 1 %}   <!-- Check if previous page is page 1 -->
-              <a href="/" class="previous">Previous</a>   <!-- If it is, link to homepage -->
+              <a href="{{ site.baseurl }}" class="previous">Previous</a>   <!-- If it is, link to homepage -->
             {% else %}
               <a href="{{ site.baseurl }}/page{{ paginator.previous_page }}">Previous</a>   <!-- Else, create link to previous page -->
             {% endif %}
